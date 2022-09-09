@@ -22,6 +22,9 @@ function App() {
             <li>
               <Link to="/multi-screen1">MultiScreen1</Link>
             </li>
+            <li>
+              <Link to="/multi-screen2">MultiScreen2</Link>
+            </li>
           </ul>
         </nav>
 
