@@ -10,6 +10,7 @@ export const MultiScreen2 = observer(() => {
     <div>
       <p>MultiScreen2</p>
       <p>{store.publicProperty}</p>
+      <p>{store.sharedData}</p>
       <button onClick={()=>navigate('/multi-screen1')}>BACK</button>
     </div>
   );
