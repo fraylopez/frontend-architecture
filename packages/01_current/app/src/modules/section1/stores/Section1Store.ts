@@ -1,17 +1,23 @@
 import { gInject, gProvide } from "@goinapp/gshell-native";
-import { observable } from "mobx";
-import { SomeEntityService } from "../services/SomeEntityService";
+import { computed, observable } from "mobx";
+import { SomeService } from "../services/SomeService";
 
 @gProvide()
 export class Section1Store {
   @observable
-  public data: string = 'I am Section1Store';
-  @observable
-  public someEntity!: object;
+  public publicProperty: string = 'I am Section1Store observable publicProperty';
 
-  @gInject(SomeEntityService) private someEntityService!: SomeEntityService;
+  @observable
+  private someEntity!: object;
+
+  @gInject(SomeService) private service!: SomeService;
 
   public fetch() {
-    this.someEntity = this.someEntityService.getSomeEntity();
+    this.someEntity = this.service.getSomeEntity();
+  }
+
+  @computed
+  public get fetchedData() {
+    return `I am computed fetched data from Section1Store: ${this.someEntity ? JSON.stringify(this.someEntity) : 'null, press fetch'}`;
   }
 }

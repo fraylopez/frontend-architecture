@@ -1,5 +1,5 @@
 {
-  "name": "01_current",
+  "name": "logic",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,6 +8,7 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "@faker-js/faker": "^7.5.0"
+  }
 }
