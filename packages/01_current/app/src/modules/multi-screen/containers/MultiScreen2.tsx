@@ -11,6 +11,7 @@ export const MultiScreen2 = observer(() => {
       <p>MultiScreen2</p>
       <p>{store.publicProperty}</p>
       <p>{store.sharedData}</p>
+      <p>{`I wanna know something from "global" domain, such as the user's name ${store.userName}`}</p>
       <button onClick={()=>navigate('/multi-screen1')}>BACK</button>
     </div>
   );
