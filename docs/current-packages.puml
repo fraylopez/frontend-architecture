@@ -1,0 +1,73 @@
+@startuml Current Packages
+
+namespace Legend {
+  class MobxStateStree <<(T,orchid)>>
+  class Mobx <<(C,DeepSkyBlue)>>
+}
+
+namespace ui {
+  namespace reactNative {
+    namespace someModule {
+      namespace someScreen {
+        namespace components {
+          class SomeOtherComponent
+          class SomeComponent
+          class ISomeComponentController
+          class SomeComponentController <<(C,DeepSkyBlue)>>
+
+          SomeComponent -down-> ISomeComponentController
+          note on link
+            If its rehusable in other modules
+            Inject controller implementing interface
+          end note
+          SomeComponentController .up.|> ISomeComponentController
+        }
+        class SomeScreen
+        note right of SomeScreen
+          Input Output coupled to technology
+        end note
+        class SomeScreenUIStore <<(C,DeepSkyBlue)>>
+        note right of SomeScreenUIStore
+          ModelView with DataBinding
+          Controller of view
+          Syncronize view status
+          Compone distintos dominios para adaptarlos al modelovista
+        end note
+
+        SomeScreen --> SomeScreenUIStore
+        SomeScreen *--> ui.reactNative.someModule.someScreen.components.SomeComponentController
+        SomeScreen --> ui.reactNative.someModule.someScreen.components.SomeComponent
+        SomeScreen --> ui.reactNative.someModule.someScreen.components.SomeOtherComponent
+      }
+    }
+  }
+  namespace web {}
+  namespace chomeExtension {}
+}
+
+namespace logic {
+  namespace models {
+    class SomeModel <<(C,DeepSkyBlue)>>
+    class SomeOtherModel <<(C,orchid)>>
+  }
+  namespace stores {
+    class SomeStore <<(C,DeepSkyBlue)>>
+    note right of SomeStore
+      Controller
+    end note
+    class SomeOtherStore <<(T,orchid)>>
+  }
+  namespace services {
+    Class SomeService
+    note right of SomeService
+      Classic Repository
+    end note
+  }
+
+  logic.stores.SomeStore --> logic.models.SomeModel
+  logic.stores.SomeStore --> logic.services.SomeService
+}
+
+ui.reactNative.someModule.someScreen.SomeScreenUIStore -down-> logic.stores.SomeStore
+
+@enduml
