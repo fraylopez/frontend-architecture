@@ -12,10 +12,6 @@ export class CartUIStore {
     return this.getProducts().reduce((total, product) => total + product.price * product.quantity, 0);
   }
 
-  addProductToCart(id: string) {
-    this.cartController.addProductToCart(id);
-  }
-
   removeProductFromCart(id: string) {
     this.cartController.removeProductFromCart(id);
   }

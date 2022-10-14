@@ -1,27 +1,27 @@
-import { Product } from "../domain/Product";
+import { ProductList } from "../domain/ProductList";
 import { ProductService } from "../infrastructure/ProductService";
 import assert from "assert";
 
 export class CartController {
   private service: ProductService;
-  private products: Product[];
+  private productList: ProductList;
   constructor() {
     this.service = new ProductService();
-    this.products = [];
+    this.productList = new ProductList();
   }
 
   addProductToCart(id: string) {
     const product = this.service.getProductById(id);
     assert(product, `Product with id ${id} not found`);
-    this.products.push(product);
+    this.productList.addProduct(product!);
   }
 
   removeProductFromCart(id: string) {
-    this.products = this.products.filter((product) => product.id !== id);
+    this.productList.removeProduct(id);
   }
 
   getProducts() {
-    return this.products;
+    return this.productList.products;
   }
 
   public checkout() {

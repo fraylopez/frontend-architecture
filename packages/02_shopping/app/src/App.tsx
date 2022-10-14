@@ -1,4 +1,5 @@
 import {
+  BrowserRouter,
   Route,
   Routes,
 } from "react-router-dom";
@@ -10,15 +11,17 @@ import { Layout } from "./modules/layout/Layout";
 
 function App() {
   return (
-    <div className="root">
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="/products" element={<ProductBrowser />} />
-          <Route path="/cart" element={<Cart />} />
-        </Route>
-      </Routes>
-    </div>
+    <BrowserRouter>
+      <div className="root">
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="/products" element={<ProductBrowser />} />
+            <Route path="/cart" element={<Cart />} />
+          </Route>
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
