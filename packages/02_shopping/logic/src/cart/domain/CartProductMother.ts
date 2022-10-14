@@ -1,15 +1,13 @@
 import { faker } from "@faker-js/faker";
-import { Product } from "./Product";
+import { CartProduct } from "./CartProduct";
 
-
-
-export class ProductMother {
+export class CartProductMother {
   static create(id: string, name: string, quantity: number, price: number) {
-    return new Product(id, name, quantity, price);
+    return new CartProduct(id, name, quantity, price);
   }
 
   static createRandom() {
-    return ProductMother.create(
+    return CartProductMother.create(
       faker.datatype.uuid(),
       faker.commerce.productName(),
       faker.datatype.number({ min: 1, max: 5 }),

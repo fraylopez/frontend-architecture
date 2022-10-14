@@ -1,6 +1,7 @@
 import { CartUIStore } from "./CartUIStore";
+import {observer} from "mobx-react";
 import {gGet} from "@goinapp/gshell-native"
-export const Cart = () => {
+export const Cart = observer(() => {
   const store = gGet(CartUIStore)
   const products = store.getProducts();
   const handleCheckout = () => {
@@ -16,6 +17,8 @@ export const Cart = () => {
             <div className="cart__product__name">{product.name}</div>
             <div className="cart__product__price">{product.price}</div>
             <div className="cart__product__quantity">{product.quantity}</div>
+            <button className="cart__product__decrease-quantity" onClick={() => store.decreaseQuantity(product.id)}> - </button>
+            <button className="cart__product__increase-quantity" onClick={() => store.increaseQuantity(product.id)}> + </button>
           </div>
         ))}
       </div>
@@ -31,4 +34,4 @@ export const Cart = () => {
     </div>
 
   );
-};
+});

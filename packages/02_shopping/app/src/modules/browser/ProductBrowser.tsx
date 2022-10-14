@@ -1,5 +1,5 @@
 import { gGet } from "@goinapp/gshell-native";
-import { Product } from "@goinapp/logic/src/cart/domain/Product";
+import { Product } from "@goinapp/logic/src/_shared/domain/Product";
 import { ProductBrowserUIStore } from "./ProductBrowserUIStore";
 
 export const ProductBrowser = () => {

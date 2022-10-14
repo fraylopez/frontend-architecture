@@ -1,5 +1,4 @@
-import { ProductService } from "../infrastructure/ProductService";
-
+import { ProductService } from "../../_shared/infrastructure/ProductService";
 export class ProductController {
   private service: ProductService;
   constructor() {
@@ -10,3 +9,6 @@ export class ProductController {
     return this.service.getAllProducts();
   }
 }
+
+
+export const productController = new ProductController();

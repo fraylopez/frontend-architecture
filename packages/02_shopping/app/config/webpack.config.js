@@ -229,23 +229,26 @@ module.exports = function (webpackEnv) {
         : isEnvDevelopment &&
           (info => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')),
     },
-    cache: {
-      type: 'filesystem',
-      version: createEnvironmentHash(env.raw),
-      cacheDirectory: paths.appWebpackCache,
-      store: 'pack',
-      buildDependencies: {
-        defaultWebpack: ['webpack/lib/'],
-        config: [__filename],
-        tsconfig: [paths.appTsConfig, paths.appJsConfig].filter(f =>
-          fs.existsSync(f)
-        ),
-      },
-    },
+    // cache: {
+    //   type: 'filesystem',
+    //   version: createEnvironmentHash(env.raw),
+    //   cacheDirectory: paths.appWebpackCache,
+    //   store: 'pack',
+    //   buildDependencies: {
+    //     defaultWebpack: ['webpack/lib/'],
+    //     config: [__filename],
+    //     tsconfig: [paths.appTsConfig, paths.appJsConfig].filter(f =>
+    //       fs.existsSync(f)
+    //     ),
+    //   },
+    // },
+    cache: false,
+
     infrastructureLogging: {
       level: 'none',
     },
     optimization: {
+      moduleIds: 'deterministic',
       minimize: isEnvProduction,
       minimizer: [
         // This is only used in production mode
@@ -462,7 +465,7 @@ module.exports = function (webpackEnv) {
                 // This is a feature of `babel-loader` for webpack (not Babel itself).
                 // It enables caching results in ./node_modules/.cache/babel-loader/
                 // directory for faster rebuilds.
-                cacheDirectory: true,
+                cacheDirectory: false,
                 // See #6846 for context on why cacheCompression is disabled
                 cacheCompression: false,
                 compact: isEnvProduction,
