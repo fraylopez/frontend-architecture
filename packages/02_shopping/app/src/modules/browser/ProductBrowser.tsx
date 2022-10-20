@@ -15,8 +15,8 @@ export const ProductBrowser = () => {
       <div className="browser__products">
         {products.map((product:Product) => (
           <div className="browser__product" key={product.id}>
-            <div className="browser__product__name">{product.name}</div>
-            <div className="browser__product__price">{product.price}</div>
+            <div className="browser__product__name"><b>{product.name}</b></div>
+            <div className="browser__product__price">{product.price}€</div>
             <button
               className="browser__product__add-to-cart"
               onClick={() => handleAddToCart(product)}
@@ -29,5 +29,3 @@ export const ProductBrowser = () => {
     </div>
   );
 }
-
-

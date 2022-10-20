@@ -14,17 +14,18 @@ export const Cart = observer(() => {
       <div className="cart__products">
         {products.map((product) => (
           <div className="cart__product" key={product.id}>
-            <div className="cart__product__name">{product.name}</div>
-            <div className="cart__product__price">{product.price}</div>
+            <div className="cart__product__name"><b>{product.name}</b></div>
+            <div className="cart__product__price">{product.price}€</div>
             <div className="cart__product__quantity">{product.quantity}</div>
             <button className="cart__product__decrease-quantity" onClick={() => store.decreaseQuantity(product.id)}> - </button>
             <button className="cart__product__increase-quantity" onClick={() => store.increaseQuantity(product.id)}> + </button>
           </div>
         ))}
       </div>
+      <br /><br />
       <div className="cart__total">
         <div className="cart__total__label">Total</div>
-        <div className="cart__total__value">{store.getTotal()}</div>
+        <div className="cart__total__value">{store.getTotal().toFixed(2)}€</div>
       </div>
       <div className="cart__actions">
         <button className="cart__actions__checkout" onClick={handleCheckout}>
