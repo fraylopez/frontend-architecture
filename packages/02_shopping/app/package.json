@@ -73,6 +73,7 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
+    "link-deps": "rm -rf ./node_modules/@goinapp/logic && cp -r ../logic ./node_modules/@goinapp/logic",
     "upgrade:logic": "yarn upgrade @goinapp/logic"
   },
   "eslintConfig": {
