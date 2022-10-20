@@ -33,6 +33,14 @@ export class ProductList<T extends Product> {
   }
 
   @action
+  replaceProduct(product: T) {
+    const index = this._products.findIndex((p) => p.id === product.id);
+    if (index !== -1) {
+      this._products[index] = product;
+    }
+  }
+
+  @action
   empty() {
     this._products.splice(0, this._products.length);
   }

@@ -18,8 +18,7 @@ export class CartController {
     if (this.productList.hasProduct(id)) {
       const existingProduct = this.productList.findProduct(id);
       productToAdd = existingProduct!.increase();
-      this.productList.removeProduct(id);
-      this.productList.addProduct(productToAdd);
+      this.productList.replaceProduct(productToAdd);
     }
     else {
       this.productList.addProduct(productToAdd);
