@@ -35,6 +35,10 @@ export class CartController {
     }
   }
 
+  deleteProductFromCart(id: string) {
+    this.productList.removeProduct(id);
+  }
+
 
   getProducts() {
     return this.productList.products;

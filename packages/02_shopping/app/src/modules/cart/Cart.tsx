@@ -19,6 +19,7 @@ export const Cart = observer(() => {
             <div className="cart__product__quantity">{product.quantity}</div>
             <button className="cart__product__decrease-quantity" onClick={() => store.decreaseQuantity(product.id)}> - </button>
             <button className="cart__product__increase-quantity" onClick={() => store.increaseQuantity(product.id)}> + </button>
+            <button className="cart__product__delete" onClick={() => store.deleteProduct(product.id)}> Remove </button>
           </div>
         ))}
       </div>

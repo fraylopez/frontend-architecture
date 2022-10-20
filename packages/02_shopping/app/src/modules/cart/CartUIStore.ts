@@ -28,4 +28,8 @@ export class CartUIStore {
     this.cartController.checkout();
   }
 
+  deleteProduct(id: string) {
+    this.cartController.deleteProductFromCart(id);
+  }
+
 }
