@@ -1,4 +1,3 @@
-import { CartProductMother } from "../../cart/domain/CartProductMother";
 import { ProductMother } from "../domain/ProductMother";
 
 const allProducts = ProductMother.createRandomList(100);
