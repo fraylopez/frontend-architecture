@@ -14,7 +14,7 @@ export class CartController {
   addProductToCart(id: string) {
     const product = this.service.getProductById(id);
     assert(product, `Product with id ${id} not found`);
-    let productToAdd = new CartProduct(product!.id, product!.name, product!.price, 1);
+    let productToAdd = new CartProduct(product!.id, product!.name, product!.price, 1, product!.stock);
     if (this.productList.hasProduct(id)) {
       const existingProduct = this.productList.findProduct(id);
       productToAdd = existingProduct!.increase();

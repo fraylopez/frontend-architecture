@@ -3,7 +3,7 @@ import { CartProduct } from "./CartProduct";
 
 export class CartProductMother {
   static create(id: string, name: string, quantity: number, price: number) {
-    return new CartProduct(id, name, quantity, price);
+    return new CartProduct(id, name, quantity, price, 1);
   }
 
   static createRandom() {
