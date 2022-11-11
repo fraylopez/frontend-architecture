@@ -1,5 +1,5 @@
 import assert from "assert";
-import { Product } from "../domain/Product";
+import { Product } from "../../_shared/domain/Product";
 import { BackendSimulator, IProduct } from "./BackendSimulator";
 
 const allProducts = BackendSimulator.getProducts(100);

@@ -4,8 +4,9 @@ import {
   Routes,
 } from "react-router-dom";
 import "./App.css";
-import { ProductBrowser } from "./modules/browser/ProductBrowser";
+
 import { Cart } from "./modules/cart/Cart";
+import { CatalogScreen } from "./modules/catalog/CatalogScreen";
 import { Home } from "./modules/home/Home";
 import { Layout } from "./modules/layout/Layout";
 
@@ -16,7 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
-            <Route path="/products" element={<ProductBrowser />} />
+            <Route path="/products" element={<CatalogScreen />} />
             <Route path="/cart" element={<Cart />} />
           </Route>
         </Routes>

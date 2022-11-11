@@ -7,45 +7,59 @@
   resolved "https://registry.yarnpkg.com/@faker-js/faker/-/faker-7.5.0.tgz#8e8265f65f5b68d2a57886d59b03788eeb676264"
   integrity sha512-8wNUCCUHvfvI0gQpDUho/3gPzABffnCn5um65F8dzQ86zz6dlt4+nmAA7PQUc8L+eH+9RgR/qzy5N/8kN0Ozdw==
 
-"@goinapp/gshell-native@^2.1.0":
-  version "2.1.0"
-  resolved "https://npm.pkg.github.com/download/@goinapp/gshell-native/2.1.0/063ed6a849a622798d3e2d5506517ea472c6252c#063ed6a849a622798d3e2d5506517ea472c6252c"
-  integrity sha512-1zvC/8q9PjjajVWMwUeOCF0Z4TcLtOwP2GFJkVQ7zTP6pZJW8v4EVh+JgiIsdI7m0KeagSaXzey9GqsYsq7TVg==
+"@goinapp/ddd@^1.0.6":
+  version "1.0.6"
+  resolved "https://npm.pkg.github.com/download/@goinapp/ddd/1.0.6/a4fe4bc5f9a72763c5eaab5dddd1ecdefe7c2f21#a4fe4bc5f9a72763c5eaab5dddd1ecdefe7c2f21"
+  integrity sha512-sGUp1klK4UK/Znnc/jdsARZKv/QvOh5NdLoyUV95/Tw03NkbTWQSFNHXH6W/jsEj8u9cBOSq1R/oNRg4rMdXMg==
   dependencies:
-    inversify "^5.1.1"
-    inversify-binding-decorators "^4.0.0"
-    inversify-inject-decorators "^3.1.0"
-    reflect-metadata "^0.1.13"
+    "@types/dinero.js" "1.9.0"
+    bson "4.6.0"
+    dinero.js "1.9.0"
+
+"@types/dinero.js@1.9.0":
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/@types/dinero.js/-/dinero.js-1.9.0.tgz#e11356764339e3d361d38bd54910282b106dc321"
+  integrity sha512-H2XdE6N/A2wJ/TJhGqeHDMUhCaey2R/Lcq9ichGBncKsFGvqrroXZWPNdDkCcgQOBPoCD4n9QuSBUC/35wuJiw==
 
 "@types/node@^18.8.5":
   version "18.8.5"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.8.5.tgz#6a31f820c1077c3f8ce44f9e203e68a176e8f59e"
   integrity sha512-Bq7G3AErwe5A/Zki5fdD3O6+0zDChhg671NfPjtIcbtzDNZTv4NPKMRFr7gtYPG7y+B8uTiNK4Ngd9T0FTar6Q==
 
-inversify-binding-decorators@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/inversify-binding-decorators/-/inversify-binding-decorators-4.0.0.tgz#c4d1ac50d7d6531f465ee7894e92031f7471c865"
-  integrity sha512-r8au/oH3vS7ttHj0RivAznwElySeRohLfg8lvOSzbrX6abf/8ik8ptk49XbzdShgrnalvl7CM6MjcskfM7MMqQ==
+base64-js@^1.3.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/base64-js/-/base64-js-1.5.1.tgz#1b1b440160a5bf7ad40b650f095963481903930a"
+  integrity sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==
 
-inversify-inject-decorators@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/inversify-inject-decorators/-/inversify-inject-decorators-3.1.0.tgz#d9941080bad77cec8a65ee29d905e4d5d73e1e95"
-  integrity sha512-/seBlVp5bXrLQS3DpKEmlgeZL6C7Tf/QITd+IMQrbBBGuCbxb7k3hRAWu9XSreNpFzLgSboz3sClLSEmGwHphw==
+bson@4.6.0:
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/bson/-/bson-4.6.0.tgz#15c3b39ba3940c3d915a0c44d51459f4b4fbf1b2"
+  integrity sha512-8jw1NU1hglS+Da1jDOUYuNcBJ4cNHCFIqzlwoFNnsTOg2R/ox0aTYcTiBN4dzRa9q7Cvy6XErh3L8ReTEb9AQQ==
+  dependencies:
+    buffer "^5.6.0"
 
-inversify@^5.1.1:
-  version "5.1.1"
-  resolved "https://registry.yarnpkg.com/inversify/-/inversify-5.1.1.tgz#6fbd668c591337404e005a1946bfe0d802c08730"
-  integrity sha512-j8grHGDzv1v+8T1sAQ+3boTCntFPfvxLCkNcxB1J8qA0lUN+fAlSyYd+RXKvaPRL4AGyPxViutBEJHNXOyUdFQ==
+buffer@^5.6.0:
+  version "5.7.1"
+  resolved "https://registry.yarnpkg.com/buffer/-/buffer-5.7.1.tgz#ba62e7c13133053582197160851a8f648e99eed0"
+  integrity sha512-EHcyIPBQ4BSGlvjB16k5KgAJ27CIsHY/2JBmCRReo48y9rQ3MaUzWX3KVlBa4U7MyX02HdVj0K7C3WaB3ju7FQ==
+  dependencies:
+    base64-js "^1.3.1"
+    ieee754 "^1.1.13"
+
+dinero.js@1.9.0:
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/dinero.js/-/dinero.js-1.9.0.tgz#15cd6b8290538077cf80c35f4a26884d8806050f"
+  integrity sha512-gbDFhCCe/ba9pU2P232FS54LFPCLeGTb8vcrgsjmXHknu/VDHIgFecA8mxLYQsqVKkHoHSCUq95ojYOakzuweA==
+
+ieee754@^1.1.13:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.2.1.tgz#8eb7a10a63fff25d15a57b001586d177d1b0d352"
+  integrity sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==
 
 mobx@^5.15.7:
   version "5.15.7"
   resolved "https://registry.yarnpkg.com/mobx/-/mobx-5.15.7.tgz#b9a5f2b6251f5d96980d13c78e9b5d8d4ce22665"
   integrity sha512-wyM3FghTkhmC+hQjyPGGFdpehrcX1KOXsDuERhfK2YbJemkUhEB+6wzEN639T21onxlfYBmriA1PFnvxTUhcKw==
-
-reflect-metadata@^0.1.13:
-  version "0.1.13"
-  resolved "https://registry.yarnpkg.com/reflect-metadata/-/reflect-metadata-0.1.13.tgz#67ae3ca57c972a2aa1642b10fe363fe32d49dc08"
-  integrity sha512-Ts1Y/anZELhSsjMcU605fU9RE4Oi3p5ORujwbIKXfWa+0Zxs510Qrmrce5/Jowq3cHSZSJqBjypxmHarc+vEWg==
 
 typescript@^4.8.2:
   version "4.8.3"

@@ -5,6 +5,7 @@
   "dependencies": {
     "@babel/core": "^7.16.0",
     "@faker-js/faker": "^7.5.0",
+    "@goinapp/ddd": "^1.0.6",
     "@goinapp/gshell-native": "^1.0.2",
     "@goinapp/logic": "file:../logic",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.3",

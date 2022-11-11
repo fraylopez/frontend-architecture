@@ -1,4 +1,4 @@
-import { ProductService } from "../../_shared/infrastructure/ProductService";
+import { ProductService } from "../infrastructure/ProductService";
 export class ProductController {
   private service: ProductService;
   constructor() {

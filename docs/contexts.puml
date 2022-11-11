@@ -1,0 +1,114 @@
+@startuml Contexts
+namespace app {
+    namespace home {
+        class HomeScreen {}
+        class HomeScreenUIStore {}
+    }
+    namespace cart {
+        class CartScreen {}
+        class CartScreenUIStore {}
+    }
+    namespace product {
+        namespace catalog {
+            class CatalogScreen {}
+            class CatalogScreenUIStore {}
+        }
+        namespace productDetail {
+            class ProductDetailScreen {}
+            class ProductDetailScreenUIStore {}
+
+        }
+        namespace wallet {
+            namespace walletBalanceWidget {
+                class WalletBalanceWidget {}
+                class WalletBalanceWidgetUIStore {}
+            }
+            namespace walletScreen {
+                class WalletScreen {}
+                class WalletScreenUIStore {}
+            }
+
+        }
+        namespace layout {
+            class TopBar {}
+            class Layout {}
+        }
+    }
+
+
+    namespace logic {
+        namespace product {
+            namespace application {
+                class ProductController {
+                    products: Product[]
+                    getAllProducts(): Promise<void>
+                    getProductById(): Promise<void>
+                }
+            }
+            namespace domain {
+                class Product {}
+            }
+            namespace infrastructure {
+                class ProductService {
+                    getAllProducts(): Promise<void>
+                }
+            }
+        }
+        namespace cart {
+            namespace application {
+                class CartController {
+                    getProducts(): CartProduct[]
+                    addProduct(product: Product): void
+                    removeProduct(product: Product): void
+                }
+
+            }
+            namespace domain {
+                class CartProduct {}
+            }
+            namespace infrastructure {
+                class CartService {
+                    checkout(): Promise<void>
+                }
+            }
+        }
+        namespace wallet {
+            namespace application {
+                class WalletController {
+                    wallet: Wallet
+                    getBalance(): Money
+                }
+            }
+            namespace domain {
+                class Wallet {
+                    balance: Money
+                }
+            }
+            namespace infrastructure {
+                class WalletService {
+                    getWallet: Promise<Wallet>
+                }
+            }
+        }
+        namespace review {
+            namespace application {
+                class ReviewController {
+                    getReviews(productId: string): Review[]
+                    getAverage(productId: string): number
+                }
+            }
+            namespace domain {
+                class Review {
+                    stars: number
+                    comment: string
+                }
+            }
+            namespace infrastructure {
+                class ReviewService { 
+                    getReviewsByProductId(productId: string): Review[]
+                    getAverage(productId: string): number
+                }
+            }
+        }
+    }
+    @enduml

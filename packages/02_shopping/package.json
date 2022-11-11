@@ -5,7 +5,8 @@
   "main": "src/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc -p  tsconfig.json --pretty "
+    "build": "tsc -p  tsconfig.json --pretty ",
+    "link-logic": "rm -rf ./app/node_modules/@goinapp/logic && cp -r ./logic ./app/node_modules/@goinapp/logic"
   },
   "author": "",
   "license": "ISC",

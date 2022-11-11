@@ -1,5 +1,5 @@
 import { gProvide } from "@goinapp/gshell-native";
-import { CartController, cartController } from "@goinapp/logic/src/cart/application/CartController";
+import { CartController, cartController } from "@goinapp/logic/src/shop/cart/application/CartController";
 
 @gProvide()
 export class CartUIStore {

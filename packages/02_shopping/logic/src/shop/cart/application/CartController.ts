@@ -1,4 +1,4 @@
-import { ProductService } from "../../_shared/infrastructure/ProductService";
+import { ProductService } from "../../product/infrastructure/ProductService";
 import assert from "assert";
 import { ProductList } from "../../_shared/domain/ProductList";
 import { CartProduct } from "../domain/CartProduct";
