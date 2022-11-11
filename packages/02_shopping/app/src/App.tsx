@@ -9,6 +9,7 @@ import { Cart } from "./modules/cart/Cart";
 import { CatalogScreen } from "./modules/catalog/CatalogScreen";
 import { Home } from "./modules/home/Home";
 import { Layout } from "./modules/layout/Layout";
+import { WalletScreen } from "./modules/wallet/walletScreen/WalletScreen";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route index element={<Home />} />
             <Route path="/products" element={<CatalogScreen />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/wallet" element={<WalletScreen />} />
           </Route>
         </Routes>
       </div>

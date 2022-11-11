@@ -1,0 +1,13 @@
+.catalog__product {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.catalog__product button {
+    margin-top: 10px;
+}
+
+.catalog__products{
+    display: "grid"
+}

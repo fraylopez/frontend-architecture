@@ -5,8 +5,6 @@ export const WalletBalanceWidget = observer(() => {
   const store = gGet(WalletBalanceWidgetUIStore)
 
   return (
-    <div className="ballanceWidget">
-      <h2>Your balance is {store.getBalance()}</h2>
-    </div>
+    <div className="ballanceWidget">balance: {store.balance.format()}</div>
   );
 });

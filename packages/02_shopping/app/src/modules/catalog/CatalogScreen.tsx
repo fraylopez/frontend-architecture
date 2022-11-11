@@ -2,6 +2,7 @@ import { gGet } from "@goinapp/gshell-native";
 
 
 import { CatalogScreenUIStore, ProductWithStars } from "./CatalogScreenUIStore";
+import styles from "./CatalogScreen.module.css";
 
 export const CatalogScreen = () => {
   const store = gGet(CatalogScreenUIStore);
@@ -13,9 +14,9 @@ export const CatalogScreen = () => {
   return (
     <div className="catalog">
       <h2>Catalog Screen</h2>
-      <div className="catalog__products">
+      <div className={styles.catalog__products}>
         {products.map((product) => (
-          <div className="catalog__product" key={product.id}>
+          <div className={styles.catalog__product} key={product.id}>
             <div className="catalog__product__name">
               <b>{product.name}</b>
             </div>
