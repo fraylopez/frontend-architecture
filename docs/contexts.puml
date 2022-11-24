@@ -1,114 +1,154 @@
 @startuml Contexts
-namespace app {
-    namespace home {
-        class HomeScreen {}
-        class HomeScreenUIStore {}
+namespace ui {
+  namespace home {
+    class HomeScreen {}
+    class HomeScreenUIStore {}
+  }
+  namespace cart {
+    class CartScreen {}
+    class CartScreenUIStore {}
+    CartScreen *--> CartScreenUIStore
+  }
+  namespace catalog {
+    class CatalogScreen {}
+    class CatalogScreenUIStore {}
+    CatalogScreen *--> CatalogScreenUIStore
+  }
+  namespace product {
+    class ProductDetailScreen {}
+    class ProductDetailScreenUIStore {}
+    ProductDetailScreen *--> ProductDetailScreenUIStore
+
+  }
+  namespace wallet {
+    namespace walletBalanceWidget {
+      class WalletBalanceWidget {}
+      class WalletBalanceWidgetUIStore {}
+      WalletBalanceWidget *--> WalletBalanceWidgetUIStore
+    }
+    namespace walletScreen {
+      class WalletScreen {}
+      class WalletScreenUIStore {}
+      WalletScreen *--> WalletScreenUIStore
+    }
+
+  }
+  namespace layout {
+    class TopBar {}
+    class Layout {}
+
+    Layout *--> TopBar
+  }
+
+  ui.layout.TopBar --> ui.wallet.walletBalanceWidget.WalletBalanceWidget
+}
+
+namespace logic {
+  namespace shop {
+    namespace _shared {
+      namespace domain {
+        class Product
+        class ProductList
+
+        ProductList *--> "0..*" Product
+      }
     }
     namespace cart {
-        class CartScreen {}
-        class CartScreenUIStore {}
+      namespace application {
+        class CartController {
+          getProducts(): CartProduct[]
+          addProduct(product: Product): void
+          removeProduct(product: Product): void
+        }
+      }
+      namespace domain {
+        class CartProduct {}
+      }
+      namespace infrastructure {
+        class CartService {
+          checkout(): Promise<void>
+        }
+      }
+
+      application.CartController --> domain.CartProduct
     }
     namespace product {
-        namespace catalog {
-            class CatalogScreen {}
-            class CatalogScreenUIStore {}
+      namespace application {
+        class ProductController {
+          products: Product[]
+          getAllProducts(): Promise<void>
+          getProductById(): Promise<void>
         }
-        namespace productDetail {
-            class ProductDetailScreen {}
-            class ProductDetailScreenUIStore {}
-
+      }
+      namespace infrastructure {
+        class ProductService {
+          getAllProducts(): Promise<void>
         }
-        namespace wallet {
-            namespace walletBalanceWidget {
-                class WalletBalanceWidget {}
-                class WalletBalanceWidgetUIStore {}
-            }
-            namespace walletScreen {
-                class WalletScreen {}
-                class WalletScreenUIStore {}
-            }
-
+      }
+      application.ProductController --> infrastructure.ProductService
+    }
+    namespace review {
+      namespace application {
+        class ReviewController {
+          getReviews(productId: string): Review[]
+          getAverage(productId: string): number
         }
-        namespace layout {
-            class TopBar {}
-            class Layout {}
+      }
+      namespace domain {
+        class Review {
+          stars: number
+          comment: string
         }
+      }
+      namespace infrastructure {
+        class ReviewService {
+          getReviewsByProductId(productId: string): Review[]
+          getAverage(productId: string): number
+        }
+      }
+      application.ReviewController --> infrastructure.ReviewService
+      domain.Review --> infrastructure.ReviewBackendService
+      note on link
+      check that relation
+      end note
+      infrastructure.ReviewService --> domain.Review
+    }
+    namespace wallet {
+      namespace application {
+        class WalletController {
+          wallet: Wallet
+          getBalance(): Money
+        }
+      }
+      namespace domain {
+        class Wallet {
+          balance: Money
+        }
+      }
+      namespace infrastructure {
+        class WalletService {
+          getWallet: Promise<Wallet>
+        }
+      }
+      application.WalletController --> domain.Wallet
     }
 
+    logic.shop.cart.application.CartController --> logic.shop._shared.domain.ProductList
+    logic.shop.cart.application.CartController --> logic.shop.product.infrastructure.ProductService
+    logic.shop.cart.domain.CartProduct --> logic.shop._shared.domain.Product
 
-    namespace logic {
-        namespace product {
-            namespace application {
-                class ProductController {
-                    products: Product[]
-                    getAllProducts(): Promise<void>
-                    getProductById(): Promise<void>
-                }
-            }
-            namespace domain {
-                class Product {}
-            }
-            namespace infrastructure {
-                class ProductService {
-                    getAllProducts(): Promise<void>
-                }
-            }
-        }
-        namespace cart {
-            namespace application {
-                class CartController {
-                    getProducts(): CartProduct[]
-                    addProduct(product: Product): void
-                    removeProduct(product: Product): void
-                }
+    logic.shop.product.infrastructure.ProductService --> logic.shop._shared.domain.Product
 
-            }
-            namespace domain {
-                class CartProduct {}
-            }
-            namespace infrastructure {
-                class CartService {
-                    checkout(): Promise<void>
-                }
-            }
-        }
-        namespace wallet {
-            namespace application {
-                class WalletController {
-                    wallet: Wallet
-                    getBalance(): Money
-                }
-            }
-            namespace domain {
-                class Wallet {
-                    balance: Money
-                }
-            }
-            namespace infrastructure {
-                class WalletService {
-                    getWallet: Promise<Wallet>
-                }
-            }
-        }
-        namespace review {
-            namespace application {
-                class ReviewController {
-                    getReviews(productId: string): Review[]
-                    getAverage(productId: string): number
-                }
-            }
-            namespace domain {
-                class Review {
-                    stars: number
-                    comment: string
-                }
-            }
-            namespace infrastructure {
-                class ReviewService { 
-                    getReviewsByProductId(productId: string): Review[]
-                    getAverage(productId: string): number
-                }
-            }
-        }
-    }
-    @enduml
+  }
+}
+
+ui.cart.CartScreenUIStore --> logic.shop.cart.application.CartController
+
+ui.catalog.CatalogScreenUIStore --> logic.shop._shared.domain.Product
+ui.catalog.CatalogScreenUIStore --> logic.shop.cart.application.CartController
+ui.catalog.CatalogScreenUIStore --> logic.shop.product.application.ProductController
+ui.catalog.CatalogScreenUIStore --> logic.shop.review.application.ReviewController
+
+ui.wallet.walletBalanceWidget.WalletBalanceWidgetUIStore --> logic.shop.wallet.application.WalletController
+ui.wallet.walletScreen.WalletScreenUIStore --> logic.shop.wallet.application.WalletController
+@enduml

@@ -1,4 +1,4 @@
-import { Wallet } from "../infrastructure/Wallet";
+import { Wallet } from "../domain/Wallet";
 import { Money } from "@goinapp/ddd";
 import { faker } from "@faker-js/faker";
 import { computed, observable } from "mobx";
