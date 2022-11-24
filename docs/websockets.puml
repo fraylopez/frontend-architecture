@@ -1,0 +1,76 @@
+@startuml Components
+
+package kubernetes {
+  component someService
+  someService - HTTP
+  component mosquitto
+  mosquitto - MQTT
+  someService ..> MQTT
+}
+
+[react-native-app] --> HTTP
+MQTT ..> [react-native-app]
+
+@enduml
+
+@startuml Design Classes
+
+package backend {
+  class RealTimeServer {
+    publishDataForUser(uuid, message: Message)
+    publishDataForAllUsers(message: Message)
+    publishPrices(message: Message)
+  }
+  class MqttConnection {
+    connect()
+    disconnect()
+    publish(topic, message)
+  }
+  interface Message {
+    key: string;
+    payload: object;
+  }
+  RealTimeServer o--> MqttConnection
+  RealTimeServer ..> Message
+}
+
+namespace frontend {
+  namespace ui {
+    class ReactMainComponent
+    class ReactSecondaryComponent
+  }
+
+  namespace logic {
+    class RealTimeClient {
+      subscribeForUserData
+      subscribeForAllUsersData
+    }
+
+    class EventEmitter <<singleton>> {
+      on(event, callback)
+      emit(event, data)
+    }
+
+    class MqttConnection {
+      connect()
+      disconnect()
+      subscribe(topic)
+    }
+
+    RealTimeClient o--> MqttConnection
+    RealTimeClient --> EventEmitter
+    note on link
+    emit
+    endnote
+  }
+
+  frontend.ui.ReactMainComponent --> frontend.logic.RealTimeClient
+  note on link
+  Initialize
+  endnote
+  frontend.ui.ReactSecondaryComponent --> frontend.logic.EventEmitter
+  note on link
+  Subscribe
+  endnote
+}
+@enduml
