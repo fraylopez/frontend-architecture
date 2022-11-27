@@ -1,11 +1,14 @@
 import { gProvide } from "@goinapp/gshell-native";
 import { CartController, cartController } from "@goinapp/logic/src/shop/cart/application/CartController";
+import { navigation, Navigation } from "@goinapp/logic/src/shop/_shared/domain/Navigation";
 
 @gProvide()
 export class CartUIStore {
   private readonly cartController: CartController;
+  private readonly _navigation: Navigation;
   constructor() {
     this.cartController = cartController;
+    this._navigation = navigation;
   }
 
   getTotal(): number {
@@ -30,6 +33,10 @@ export class CartUIStore {
 
   deleteProduct(id: string) {
     this.cartController.deleteProductFromCart(id);
+  }
+
+  goBack() {
+    this._navigation.goBack();
   }
 
 }

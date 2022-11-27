@@ -1,43 +1,45 @@
-import { Link } from "react-router-dom";
 import { WalletBalanceWidget } from "src/modules/wallet/walletBalanceWidget/WalletBalanceWidget";
+import { navigation, Screen } from "@goinapp/logic/src/shop/_shared/domain/Navigation";
 import styles from "./Topbar.module.css";
 
 export function Topbar() {
 
   interface IUrl {
-    url: string;
+    screen: Screen;
     label: string;
   }
 
   const pages: IUrl[] = [
     {
-      url: '/',
+      screen: Screen.HOME,
       label: 'Home',
     },
     {
-      url: '/products',
+      screen: Screen.CATALOG,
       label: 'Products',
     },
     {
-      url: '/cart',
+      screen: Screen.CART,
       label: 'Cart',
     },
     {
-      url: '/wallet',
+      screen: Screen.WALLET,
       label: 'Wallet',
     },
   ];
 
   return (
-    <div className={styles.topbar} 
+    <div className={styles.topbar}
     style={{display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between"}}>
       <nav style={{display: "flex", alignItems: "center", alignSelf:"flex-start"}}>
         <img src="/amazon-logo.png" />
         <ul>
           {pages.map((url, index) => {
             return (
-              <li key={index}>
-                <Link to={url.url}>{url.label}</Link>
+              <li key={index} onClick={() => {
+                navigation.goTo(url.screen)
+              }}>
+                {url.label}
               </li>
             );
           })}

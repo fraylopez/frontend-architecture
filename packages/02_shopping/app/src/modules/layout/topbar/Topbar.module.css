@@ -12,17 +12,15 @@
   list-style: none outside none;
   margin: 0;
   padding: 0;
+  margin-left: 10px;
 }
 
 .topbar li {
   margin: 0 20px 0 0;
   display: inline;
-}
-
-.topbar li a {
   color: white;
-  text-decoration: none;
 }
-.topbar li a:hover {
+.topbar li:hover {
   text-decoration: underline;
+  cursor: pointer;
 }
