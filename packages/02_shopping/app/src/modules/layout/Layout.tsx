@@ -1,16 +1,17 @@
-import { Outlet } from "react-router-dom";
 import { Topbar } from "./topbar/Topbar";
 import styles from "./Layout.module.css";
+import React from "react";
 
-export function Layout() {
+interface propsWithChildren {
+  children: React.ReactNode
+}
+
+export const Layout = ({children}: propsWithChildren) => {
   return (
     <>
       <Topbar />
-      {/* An <Outlet> renders whatever child route is currently active,
-            so you can think about this <Outlet> as a placeholder for
-            the child routes we defined above. */}
       <div className={styles.container}>
-        <Outlet />
+        {children}
       </div>
     </>
   );

@@ -11,6 +11,7 @@ export const Cart = observer(() => {
   return (
     <div className="cart">
       <h2>Cart</h2>
+      <button onClick={store.goBack}>Go back</button>
       <div className="cart__products">
         {products.map((product) => (
           <div className="cart__product" key={product.id}>
