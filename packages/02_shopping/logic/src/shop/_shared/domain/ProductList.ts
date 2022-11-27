@@ -1,6 +1,7 @@
 import { observable, computed, action } from "mobx";
 import { Product } from "./Product";
 
+// TODO: Refactor as list
 export class ProductList<T extends Product> {
 
   @observable

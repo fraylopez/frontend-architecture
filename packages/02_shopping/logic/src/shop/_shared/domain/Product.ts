@@ -5,6 +5,8 @@ export interface IProduct {
   price: number;
   stock: number;
 }
+
+// TODO: Move to product module
 export class Product {
   @observable
   readonly name: string;
