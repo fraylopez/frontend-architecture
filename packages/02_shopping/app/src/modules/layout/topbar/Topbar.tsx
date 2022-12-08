@@ -26,6 +26,10 @@ export function Topbar() {
       screen: Screen.WALLET,
       label: 'Wallet',
     },
+    {
+      screen: Screen.TRAVELNAVIGATION,
+      label: 'Travel',
+    },
   ];
 
   return (

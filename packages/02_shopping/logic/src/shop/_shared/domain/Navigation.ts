@@ -4,15 +4,19 @@ export enum Screen {
   PRODUCT_DETAIL = "PRODUCT_DETAIL",
   CART = "CART",
   WALLET = "WALLET",
+
+  TRAVELNAVIGATION = "TRAVELNAVIGATION",
+  BARCELONA = "BARCELONA",
+  BERLIN = "BERLIN",
 }
 
 export interface INavigation {
-  getScreen(): Screen;
-  goTo(screen: Screen): void;
-  goBack(): void;
   onChangeScreen(
     callback: (screen: Screen) => void
   ): void;
+  getScreen(): Screen;
+  goTo(screen: Screen): void;
+  goBack(): void;
 }
 
 export class Navigation implements INavigation {
@@ -42,6 +46,10 @@ export class Navigation implements INavigation {
 
   public onChangeScreen(callback: (screen: Screen) => void): void {
     this.onChangeCallback = callback;
+  }
+
+  public getHistory(): Screen[] {
+    return this.history;
   }
 
   private notifyChange() {

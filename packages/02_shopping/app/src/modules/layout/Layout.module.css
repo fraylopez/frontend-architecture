@@ -3,3 +3,12 @@
   margin: auto;
   max-width: 960px;
 }
+
+.debugLayer {
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  width: 300px;
+  height: 300px;
+  overflow: scroll;
+}

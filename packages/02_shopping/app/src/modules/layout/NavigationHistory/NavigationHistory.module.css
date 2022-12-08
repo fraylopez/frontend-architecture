@@ -1,0 +1,12 @@
+.preWrapper {
+  padding: 20px;
+  font-size: 12px;
+  background-color: black;
+  color: greenyellow;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.preWrapper h2 {
+  color: red;
+  font-size: 16px;
+  font-weight: bold;
+}
